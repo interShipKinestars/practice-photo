@@ -1,110 +1,129 @@
 import React, { useEffect } from 'react';
-import { Text, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Screen } from '../constants';
-import { Ionicons } from '@expo/vector-icons';
+import { AntDesign, EvilIcons,Ionicons } from '@expo/vector-icons';
 import {
   HomePage, 
-  LoggedOut, 
-  Login, 
-  Resgister,
   Chat,
   Profile,
-  Search
+  Search,
+  InformationStory
 } from '../modules'
+import { NewPage } from '../modules/new/pages';
+import { LinearGradient } from 'expo-linear-gradient';
+
 
 const MainStack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
+
 export default function Main() {
   return (
     <MainStack.Navigator
       headerMode="none"
-      initialRouteName={"BottomTabNavigator"}>
+      // mode="modal"
+      initialRouteName="BottomTabNavigator">
       <MainStack.Screen
         name="BottomTabNavigator"
-        // component={BottomTabNavigator}
+        component={BottomTabNavigator}
       />
+
       <MainStack.Screen
-        name={Screen.LoggedOut}
-        component={LoggedOut}
+        name={Screen.INFORMATIONSTOTY}
+        component={InformationStory}
       />
-      <MainStack.Screen
-        name={Screen.Login}
-        component={Login}
-      />
-      <MainStack.Screen
-        name={Screen.Resgister}
-        component={Resgister}
-      />
-      
+
     </MainStack.Navigator>
   );
 };
+
+const NewTabNativation = ({children, onPress}) => (
+  <TouchableOpacity
+    onPress={onPress}
+    style={{
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+  >
+    <LinearGradient
+      colors={['#FF00D6', '#FF4D00']}
+      style={{
+        width: 70,
+        height: 40,
+        borderRadius: 20, 
+      }}
+    >
+      {children}
+    </LinearGradient>
+  </TouchableOpacity>
+)
+
 function BottomTabNavigator() {
- 
   return (
     <BottomTab.Navigator
-      initialRouteName={Screen.HOME_PAGE}
-      headerMode="none"
-      tabBarOptions={{
+      headerMode="none" 
+    
+      screenOptions={{
+        headerShown: false
+      }}
+     tabBarOptions={{
         showIcon: true,
         showLabel: false,
-        activeTintColor: colors.primary,
-        inactiveTintColor: BaseColor.grayColor,
-        style: { borderTopWidth: 1, backgroundColor: '#FFF', borderTopColor: '#f7fafd' },
-        labelStyle: {
-          fontSize: 12,
-          fontFamily: font,
-        },
-      }}>
+        activeTintColor: '#000',
+        inactiveTintColor: '#666',
+      }}
+     
+      initialRouteName={Screen.HOME_PAGE}
+     >
       <BottomTab.Screen
-        name={Screen.NEW_HOME}
-        component={NewAppHome}
+        name={Screen.HOME_PAGE}
+        component={HomePage}
         options={{
-          title: 'Khám phá',
           tabBarIcon: ({ color }) => {
-            return <Icon color={color} name="compass" size={20} solid />;
+            return <AntDesign name="home" size={20} color={color} />;
+          },
+        }}
+      />
+
+      <BottomTab.Screen
+        name={Screen.SEARCH}
+        component={Search}
+        options={{
+          tabBarIcon: ({ color }) => {
+            return <EvilIcons name="search" size={28} color={color} />;
+          },
+        }}
+      />
+
+      <BottomTab.Screen
+        name={Screen.NEWPAGE}
+        component={NewPage}
+        options={{
+          tabBarIcon: ({ focused,color }) => (
+            <Ionicons  name="add-outline" size={24} color='#fff' />
+          ),
+          tabBarButton: props => (
+            <NewTabNativation {...props}/>
+          )
+        }}
+      /> 
+
+      <BottomTab.Screen
+        name={Screen.CHAT}
+        component={Chat}
+        options={{
+          tabBarIcon: ({ color }) => {
+            return <Ionicons name="chatbubble-outline" size={20} color={color} />;
           },
         }}
       />
       <BottomTab.Screen
-        name={Screen.BOOKING_PAGE}
-        component={BookingPage}
+        name={Screen.PROFILE}
+        component={Profile}
         options={{
-          title: 'Đơn hàng',
           tabBarIcon: ({ color }) => {
-            return <Icon color={color} name="shopping-bag"  size={20} solid />;
-          },
-        }}
-      />
-      <BottomTab.Screen
-        name={Screen.SEARCH_PAGE}
-        component={SearchScreenPage}
-        options={{
-          title: 'Tìm kiếm',
-          tabBarIcon: ({ color }) => {
-            return <Icon color={color} name="search" size={20} solid />;
-          },
-        }}
-      />
-      <BottomTab.Screen
-        name={Screen.SUPPORT}
-        component={SupportPage}
-        options={{
-          title: 'Hỗ trợ',
-          tabBarIcon: ({ color }) => {
-            return <Icon solid color={color} name="headset" size={20} />;
-          },
-        }}
-      />
-      <BottomTab.Screen
-        name={Screen.PROFILE_PAGE}
-        component={ProfilePage}
-        options={{
-          title: 'Tài khoản',
-          tabBarIcon: ({ color }) => {
-            return <Icon solid color={color} name="user-circle" size={20} />;
+            return <AntDesign name="user" size={20} color={color} />;
           },
         }}
       />

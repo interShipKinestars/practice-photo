@@ -1,1 +1,1 @@
-export * from './images.config'
+export * from './image.config'

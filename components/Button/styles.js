@@ -16,7 +16,7 @@ export default StyleSheet.create({
     textTransform: 'uppercase'
   },
   outline: {
-    borderWidth: 1
+    borderWidth: 2
   },
 
   full: {
@@ -24,6 +24,6 @@ export default StyleSheet.create({
     alignSelf: "auto"
   },
   round: {
-    borderRadius: 28
+    borderRadius: 6
   }
 });

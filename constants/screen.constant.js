@@ -4,6 +4,8 @@ export const Screen = {
   LOGIN : 'Login',
   REGISTER: 'Register',
   CHAT: 'Chat',
-  SEARCH: 'search',
-  PROFILE: 'Profile'
+  SEARCH: 'Search',
+  PROFILE: 'Profile',
+  NEWPAGE: 'NewPage',
+  INFORMATIONSTOTY :'InformationStory',
 }
