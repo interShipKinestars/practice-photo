@@ -1,15 +1,32 @@
 import React from 'react';
 import { StyleSheet, Text, View ,Image} from 'react-native';
-import { Images } from '../../../config/image.config';
 
 export default function StoryUser(props) {
-  const {Item} = props
+  const {Item, styleText, style} = props
   return (
-    <View style={styles.container}>
+    <View style={StyleSheet.flatten([
+            styles.container,
+            style,
+          ])}>
       <Image style={styles.avatar} source={Item.avatar}/>
       <View style={styles.contentText}>
-        <Text style={styles.name}>{Item.name}</Text>
-        <Text style={styles.mail}>{Item.mail}</Text>
+        <Text 
+          style={StyleSheet.flatten([
+            styles.name,
+            styleText,
+          ])}
+        >
+          {Item.name}
+        </Text>
+
+        <Text 
+          style={StyleSheet.flatten([
+            styles.mail,
+            styleText,
+          ])} 
+        >
+          {Item.mail}
+        </Text>
       </View>
     </View>
   );
@@ -17,7 +34,6 @@ export default function StoryUser(props) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -33,7 +49,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   name: {
-    textTransform: 'uppercase',
+    textTransform: 'capitalize',
     fontSize: 13,
     fontWeight: '700'
   },

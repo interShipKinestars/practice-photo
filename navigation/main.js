@@ -9,7 +9,10 @@ import {
   Chat,
   Profile,
   Search,
-  InformationStory
+  InformationStory,
+  LoggedOut,
+  Login,
+  Resgister
 } from '../modules'
 import { NewPage } from '../modules/new/pages';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -22,7 +25,6 @@ export default function Main() {
   return (
     <MainStack.Navigator
       headerMode="none"
-      // mode="modal"
       initialRouteName="BottomTabNavigator">
       <MainStack.Screen
         name="BottomTabNavigator"
@@ -34,6 +36,20 @@ export default function Main() {
         component={InformationStory}
       />
 
+      <MainStack.Screen
+        name={Screen.LOGGED_OUT}
+        component={LoggedOut}
+      />
+
+      <MainStack.Screen
+        name={Screen.LOGIN}
+        component={Login}
+      />
+
+      <MainStack.Screen
+        name={Screen.REGISTER}
+        component={Resgister}
+      />
     </MainStack.Navigator>
   );
 };
@@ -63,7 +79,6 @@ function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       headerMode="none" 
-    
       screenOptions={{
         headerShown: false
       }}
@@ -73,7 +88,6 @@ function BottomTabNavigator() {
         activeTintColor: '#000',
         inactiveTintColor: '#666',
       }}
-     
       initialRouteName={Screen.HOME_PAGE}
      >
       <BottomTab.Screen

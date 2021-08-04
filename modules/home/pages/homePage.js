@@ -8,14 +8,15 @@ import {
   TouchableOpacity, 
   Image,  
   Dimensions,
-  ImageBackground 
+  ImageBackground,
+  SafeAreaView
 } from 'react-native';
 import {Screen} from '../../../constants'
 import { Button } from '../../../components';
 import {Stories, ListImageHome} from '../../../data'
 import { StoryUser } from '../components';
 export default function HomePage({ navigation }) {
-  const { width, height } = Dimensions.get('window');
+  const { width } = Dimensions.get('window');
   const lastItem = ListImageHome.length /2 - 1
 
   const renderListItemFirstChildSmaller = ({item, index}) => (
@@ -53,7 +54,8 @@ export default function HomePage({ navigation }) {
   )
 
   return (
-      <ScrollView style={styles.scrollView}>
+    <SafeAreaView style={{flex: 1}}>
+      <ScrollView style={styles.container}>
         <Text style={styles.tilteHeard}>
           discover
         </Text>
@@ -101,12 +103,14 @@ export default function HomePage({ navigation }) {
             <View style={styles.listItems}>
               <FlatList
                   style={{...styles.containerColumn, marginRight: 10}}
+                   keyExtractor={(item, index) => index.toString()}
                   data={ListImageHome.filter((item, index) => index % 2 === 0)}
                   renderItem={renderListItemFirstChildSmaller}
                 />
 
                 <FlatList
                   style={styles.containerColumn}
+                  keyExtractor={(item, index) => index.toString()}
                   data={ListImageHome.filter((item, index) => index % 2 !== 0) }
                   renderItem={renderListItemLastChildSmaller}
                 />
@@ -116,7 +120,6 @@ export default function HomePage({ navigation }) {
 
           <Button
               style={{ 
-                width: '100%',
                 marginTop: width * 0.053,
                 marginBottom: width * 0.053,
                 backgroundColor: '#FFF',
@@ -132,15 +135,15 @@ export default function HomePage({ navigation }) {
               </Text>
             </Button>
       </ScrollView>
+      </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  scrollView: {
     paddingHorizontal: 16,
+    backgroundColor: '#fff'
   },
   content: {
     flex: 1,

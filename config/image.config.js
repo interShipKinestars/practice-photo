@@ -20,4 +20,11 @@ export const Images = {
   image8: require('../assets/images/image8.jpeg'),
   image9: require('../assets/images/image9.jpeg'),
   image10: require('../assets/images/image10.jpeg'),
+  dog1: require('../assets/images/dog1.jpeg'),
+  dog2: require('../assets/images/dog2.jpeg'),
+  dog3: require('../assets/images/dog3.jpeg'),
+  dog4: require('../assets/images/dog4.jpeg'),
+  dog5: require('../assets/images/dog5.jpeg'),
+  dog6: require('../assets/images/dog6.jpeg'),
+  avatarDefault: require('../assets/images/avatarDefault.png'),
 }
