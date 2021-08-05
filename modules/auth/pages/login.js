@@ -4,6 +4,7 @@ import {
   Text, 
   View,
   SafeAreaView,
+  ScrollView,
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import {Header, Button, TextInput} from '../../../components'
@@ -33,8 +34,7 @@ export default function Login({navigation}) {
   };
 
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <View style={styles.container}>
+      <View style={styles.container} forceInset={{top: 'always'}}>
         <Header
           onPressLeft={() => {
             navigation.goBack();
@@ -48,7 +48,7 @@ export default function Login({navigation}) {
           primaryMode
         />
 
-       <View style={styles.main}>
+       <ScrollView style={styles.main}>
           <Text style={styles.tilteHeard}>log in</Text>
           <TextInput
           style={{...styles.input,marginTop: 32}}
@@ -97,9 +97,8 @@ export default function Login({navigation}) {
               log in
             </Text>
           </Button>
-        </View>
+        </ScrollView>
        </View>
-    </SafeAreaView>
   );
 }
 
@@ -120,5 +119,6 @@ const styles = StyleSheet.create({
   input: {
     borderWidth: 2,
     borderColor: '#000',
-  }
+  },
+  
 });

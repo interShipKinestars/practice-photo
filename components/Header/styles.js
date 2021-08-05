@@ -1,9 +1,8 @@
 import {StyleSheet, Platform} from 'react-native';
-import { getStatusBarHeight, hasNotch } from '../../utils';
-
+import { getStatusBarHeight} from '../../utils';
 export default StyleSheet.create({
   contain: {
-    paddingTop: 15,
+    paddingTop: Platform.OS == 'android' ? 35 : getStatusBarHeight() + 15,
     paddingBottom: 15, 
     flexDirection: 'row',
     minHeight: 60,

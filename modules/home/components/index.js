@@ -1,4 +1,7 @@
-import StoryUser from './storyUser'
+import GirdImages from './girdImages'
+import StoryFriend from './storyFriend'
+
 export{
-  StoryUser
+  StoryFriend,
+  GirdImages
 }

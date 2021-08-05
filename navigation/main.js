@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Screen } from '../constants';
@@ -12,7 +12,9 @@ import {
   InformationStory,
   LoggedOut,
   Login,
-  Resgister
+  Resgister,
+  Conversation,
+  ProfileFriend
 } from '../modules'
 import { NewPage } from '../modules/new/pages';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -49,6 +51,16 @@ export default function Main() {
       <MainStack.Screen
         name={Screen.REGISTER}
         component={Resgister}
+      />
+
+      <MainStack.Screen
+        name={Screen.CONVERSATION}
+        component={Conversation}
+      />
+
+      <MainStack.Screen
+        name={Screen.PROFILE_FRIEND}
+        component={ProfileFriend}
       />
     </MainStack.Navigator>
   );

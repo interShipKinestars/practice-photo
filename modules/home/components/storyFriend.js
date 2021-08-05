@@ -1,13 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View ,Image} from 'react-native';
-
+import { StyleSheet, Text, View ,Image, TouchableOpacity} from 'react-native';
+import {Screen} from '../../../constants'
 export default function StoryUser(props) {
-  const {Item, styleText, style} = props
+  const {Item, styleText, style, navigation} = props
   return (
-    <View style={StyleSheet.flatten([
-            styles.container,
-            style,
-          ])}>
+    <TouchableOpacity
+      style={StyleSheet.flatten([
+        styles.container,
+        style,
+      ])}
+      activeOpacity={0.9}
+      onPress={() => navigation.navigate(Screen.PROFILE_FRIEND, {Item})}
+    >
       <Image style={styles.avatar} source={Item.avatar}/>
       <View style={styles.contentText}>
         <Text 
@@ -28,7 +32,7 @@ export default function StoryUser(props) {
           {Item.mail}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 

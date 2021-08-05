@@ -8,50 +8,14 @@ import {
   TouchableOpacity, 
   Image,  
   Dimensions,
-  ImageBackground,
   SafeAreaView
 } from 'react-native';
 import {Screen} from '../../../constants'
 import { Button } from '../../../components';
 import {Stories, ListImageHome} from '../../../data'
-import { StoryUser } from '../components';
+import { StoryFriend , GirdImages} from '../components';
 export default function HomePage({ navigation }) {
   const { width } = Dimensions.get('window');
-  const lastItem = ListImageHome.length /2 - 1
-
-  const renderListItemFirstChildSmaller = ({item, index}) => (
-    <TouchableOpacity
-      key={index}
-      activeOpacity={0.9}
-      onPress={() => navigation.navigate(Screen.INFORMATIONSTOTY, {item})}
-    >
-      <ImageBackground 
-        source={item.image} 
-        style={{ 
-          marginBottom: 10 ,
-          height: index ===  0 ||  index ===  2 ? 220: 310
-        }} 
-        resizeMode="cover"
-      />
-    </TouchableOpacity>
-  );
-
-  const  renderListItemLastChildSmaller = ({item, index}) => (
-    <TouchableOpacity
-      key={index}
-      activeOpacity={0.9}
-      onPress={() => navigation.navigate(Screen.INFORMATIONSTOTY, {item})}
-    >
-      <ImageBackground 
-        source={item.image} 
-        style={{
-          marginBottom: 10, 
-          height: index == lastItem ||  index ===  2 ? 220 : 310
-        }} 
-        resizeMode="cover"
-      />
-    </TouchableOpacity>
-  )
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -87,7 +51,7 @@ export default function HomePage({ navigation }) {
                     source={item.story}
                   />
 
-                  <StoryUser Item={item}/>
+                  <StoryFriend Item={item} navigation={navigation}/>
               </TouchableOpacity>
                )
              }}
@@ -99,23 +63,8 @@ export default function HomePage({ navigation }) {
             <Text style={styles.tilteContent}>
               Browse all
             </Text>
-
-            <View style={styles.listItems}>
-              <FlatList
-                  style={{...styles.containerColumn, marginRight: 10}}
-                   keyExtractor={(item, index) => index.toString()}
-                  data={ListImageHome.filter((item, index) => index % 2 === 0)}
-                  renderItem={renderListItemFirstChildSmaller}
-                />
-
-                <FlatList
-                  style={styles.containerColumn}
-                  keyExtractor={(item, index) => index.toString()}
-                  data={ListImageHome.filter((item, index) => index % 2 !== 0) }
-                  renderItem={renderListItemLastChildSmaller}
-                />
-
-            </View>
+            
+            <GirdImages ListItems={ListImageHome} navigation={navigation}/>
           </View>
 
           <Button

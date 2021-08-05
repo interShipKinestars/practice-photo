@@ -11,7 +11,7 @@ const {width,height} = Dimensions.get('window')
 import {Images} from '../../../config'
 import { Button } from '../../../components';
 import { Screen } from '../../../constants';
-import { StoryUser } from '../../home/components';
+import { StoryFriend } from '../../home/components';
 export default function LoggedOut({navigation}) {
   const item = {
     avatar: Images.avatar,
@@ -27,7 +27,7 @@ export default function LoggedOut({navigation}) {
         >
           <Text style={styles.titleHedaer}>photo</Text>
           
-          <StoryUser style={styles.storyUser} Item={item}/>
+          <StoryFriend style={styles.storyUser} Item={item}/>
         </ImageBackground>
 
         <View style={styles.groundBtn}>

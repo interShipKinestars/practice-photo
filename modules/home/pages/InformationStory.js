@@ -6,7 +6,7 @@ import {
   Dimensions, 
   View
 } from 'react-native';
-import { StoryUser } from '../components';
+import { StoryFriend } from '../components';
 import { EvilIcons } from '@expo/vector-icons';
 const {width} = Dimensions.get('window')
 export default function InformationStory({ navigation, route }) {
@@ -22,17 +22,18 @@ export default function InformationStory({ navigation, route }) {
         style={{
           width: width,
           height: width * 0.5,
-          paddingHorizontal: 16
+          paddingHorizontal: 25,
         }}
       >
         <View 
           style={{
-            marginTop: 46,
+            paddingTop: 50,
             flexDirection:'row',
+            justifyContent: 'space-around',
             alignItems: 'center',
           }}
         >
-        <StoryUser Item={item} styleText={{ color: '#fff'}}/>
+        <StoryFriend Item={item} styleText={{ color: '#fff'}} navigation={navigation}/>
         <EvilIcons onPress={close} name="close" size={24} color="#fff" />
         </View>
       </LinearGradient>

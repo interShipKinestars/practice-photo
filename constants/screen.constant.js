@@ -8,4 +8,6 @@ export const Screen = {
   PROFILE: 'Profile',
   NEWPAGE: 'NewPage',
   INFORMATIONSTOTY :'InformationStory',
+  CONVERSATION: 'Conversation',
+  PROFILE_FRIEND: 'ProfileFriend'
 }

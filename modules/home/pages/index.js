@@ -1,7 +1,8 @@
 import HomePage from './homePage'
-import InformationStory from './InformationStory'
-
+import InformationStory from './informationStory'
+import ProfileFriend from './profileFriend'
 export {
   HomePage,
-  InformationStory
+  InformationStory,
+  ProfileFriend
 }

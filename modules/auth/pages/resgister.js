@@ -100,8 +100,7 @@ export default function Register({navigation}) {
   )
 
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <View style={styles.container}>
+      <View style={styles.container} forceInset={{top: 'always'}}>
         <Header
           onPressLeft={() => {
             navigation.goBack();
@@ -145,8 +144,7 @@ export default function Register({navigation}) {
             </Text>
           }
         </View>
-       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 
